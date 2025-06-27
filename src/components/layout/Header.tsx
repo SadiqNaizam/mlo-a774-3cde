@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { LogOut, Settings, User } from 'lucide-react';
 
 const Header: React.FC = () => {
+  console.log('Header loaded');
+
   return (
     <header className="flex h-16 items-center justify-end px-6">
       <DropdownMenu>
