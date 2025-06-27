@@ -48,7 +48,7 @@ const mockArtists: Artist[] = [
 
 const mockAlbums: Album[] = [
   { id: 'al1', title: 'THE BOOK', artist: 'YOASOBI', imageUrl: 'https://i.scdn.co/image/ab67616d00001e02d8b8b8b8b8b8b8b8b8b8b8b8' },
-  { id: 'al2', title: 'Uta\'s Songs: One Piece Film Red', artist: 'Ado', imageUrl: 'https://i.scdn.co/image/ab67616d00001e02f8b8b8b8b8b8b8b8b8b8b8b8' },
+  { id: 'al2', title: 'Uta\\'s Songs: One Piece Film Red', artist: 'Ado', imageUrl: 'https://i.scdn.co/image/ab67616d00001e02f8b8b8b8b8b8b8b8b8b8b8b8' },
 ];
 
 const mockPlaylists: Playlist[] = [
@@ -57,86 +57,4 @@ const mockPlaylists: Playlist[] = [
 ];
 
 // In a real app, this data would come from props or a query hook
-// interface SearchResultsDisplayProps {
-//   songs: Song[];
-//   artists: Artist[];
-//   albums: Album[];
-//   playlists: Playlist[];
-// }
-
-const SearchResultsDisplay: React.FC = () => {
-  console.log('SearchResultsDisplay loaded');
-
-  return (
-    <div className="mt-6">
-      <Tabs defaultValue="songs" className="w-full">
-        <TabsList>
-          <TabsTrigger value="songs">Songs</TabsTrigger>
-          <TabsTrigger value="artists">Artists</TabsTrigger>
-          <TabsTrigger value="albums">Albums</TabsTrigger>
-          <TabsTrigger value="playlists">Playlists</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="songs" className="mt-4">
-          <div className="flex flex-col gap-2">
-            {mockSongs.map((song, index) => (
-              <SongListItem
-                key={song.id}
-                index={index + 1}
-                title={song.title}
-                artist={song.artist}
-                album={song.album}
-                duration={song.duration}
-                imageUrl={song.imageUrl}
-              />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="artists" className="mt-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {mockArtists.map((artist) => (
-              <MediaCoverItem
-                key={artist.id}
-                title={artist.name}
-                description="Artist"
-                imageUrl={artist.imageUrl}
-                type="artist"
-              />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="albums" className="mt-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {mockAlbums.map((album) => (
-              <MediaCoverItem
-                key={album.id}
-                title={album.title}
-                description={album.artist}
-                imageUrl={album.imageUrl}
-                type="album"
-              />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="playlists" className="mt-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {mockPlaylists.map((playlist) => (
-              <MediaCoverItem
-                key={playlist.id}
-                title={playlist.name}
-                description={`By ${playlist.creator}`}
-                imageUrl={playlist.imageUrl}
-                type="playlist"
-              />
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
-};
-
-export default SearchResultsDisplay;
+// interface SearchResultsDisplayProps {\n//   songs: Song[];\n//   artists: Artist[];\n//   albums: Album[];\n//   playlists: Playlist[];\n// }\n\nconst SearchResultsDisplay: React.FC = () => {\n  return (\n    <div className=\"mt-6\">\n      <Tabs defaultValue=\"songs\" className=\"w-full\">\n        <TabsList>\n          <TabsTrigger value=\"songs\">Songs</TabsTrigger>\n          <TabsTrigger value=\"artists\">Artists</TabsTrigger>\n          <TabsTrigger value=\"albums\">Albums</TabsTrigger>\n          <TabsTrigger value=\"playlists\">Playlists</TabsTrigger>\n        </TabsList>\n\n        <TabsContent value=\"songs\" className=\"mt-4\">\n          <div className=\"flex flex-col gap-2\">\n            {mockSongs.map((song, index) => (\n              <SongListItem\n                key={song.id}\n                trackNumber={index + 1}\n                title={song.title}\n                artist={song.artist}\n                album={song.album}\n                duration={song.duration}\n                imageUrl={song.imageUrl}\n              />\n            ))}\n          </div>\n        </TabsContent>\n\n        <TabsContent value=\"artists\" className=\"mt-4\">\n          <div className=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4\">\n            {mockArtists.map((artist) => (\n              <MediaCoverItem\n                key={artist.id}\n                href={`/artist?id=${artist.id}`}\n                title={artist.name}\n                description=\"Artist\"\n                imageUrl={artist.imageUrl}\n              />\n            ))}\n          </div>\n        </TabsContent>\n\n        <TabsContent value=\"albums\" className=\"mt-4\">\n          <div className=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4\">\n            {mockAlbums.map((album) => (\n              <MediaCoverItem\n                key={album.id}\n                href={`/album?id=${album.id}`}\n                title={album.title}\n                description={album.artist}\n                imageUrl={album.imageUrl}\n              />\n            ))}\n          </div>\n        </TabsContent>\n\n        <TabsContent value=\"playlists\" className=\"mt-4\">\n          <div className=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4\">\n            {mockPlaylists.map((playlist) => (\n              <MediaCoverItem\n                key={playlist.id}\n                href={`/playlist?id=${playlist.id}`}\n                title={playlist.name}\n                description={`By ${playlist.creator}`}\n                imageUrl={playlist.imageUrl}\n              />\n            ))}\n          </div>\n        </TabsContent>\n      </Tabs>\n    </div>\n  );\n};\n\nexport default SearchResultsDisplay;
