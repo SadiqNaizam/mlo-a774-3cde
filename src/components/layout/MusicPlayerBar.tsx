@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 
 const MusicPlayerBar: React.FC = () => {
+  console.log('MusicPlayerBar loaded');
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
