@@ -20,11 +20,9 @@ const MediaCoverItem: React.FC<MediaCoverItemProps> = ({
   title,
   description,
 }) => {
-  console.log('MediaCoverItem loaded for:', title);
-
   return (
     <Link to={href} className="group block w-full">
-      <Card className="w-full overflow-hidden transition-all duration-300 bg-neutral-800/50 hover:bg-neutral-700/80 border-transparent">
+      <Card className="w-full overflow-hidden transition-all duration-300 bg-secondary/50 hover:bg-secondary/80 border-transparent">
         <CardContent className="p-4">
           <div className="relative mb-4">
             <div className="aspect-square w-full overflow-hidden rounded-md">
@@ -34,13 +32,13 @@ const MediaCoverItem: React.FC<MediaCoverItemProps> = ({
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
             </div>
-            <div className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full bg-green-500 text-black shadow-lg opacity-0 transition-all duration-300 group-hover:bottom-4 group-hover:opacity-100">
+            <div className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg opacity-0 transition-all duration-300 group-hover:bottom-4 group-hover:opacity-100">
               <Play className="h-6 w-6 fill-current" />
             </div>
           </div>
           <div className="flex flex-col">
-            <p className="font-bold text-white truncate">{title}</p>
-            <p className="text-sm text-neutral-400 truncate">{description}</p>
+            <p className="font-bold text-foreground truncate">{title}</p>
+            <p className="text-sm text-muted-foreground truncate">{description}</p>
           </div>
         </CardContent>
       </Card>
