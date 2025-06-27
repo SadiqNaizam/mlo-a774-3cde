@@ -20,9 +20,11 @@ const MediaCoverItem: React.FC<MediaCoverItemProps> = ({
   title,
   description,
 }) => {
+  console.log('MediaCoverItem loaded for:', title);
+
   return (
     <Link to={href} className="group block w-full">
-      <Card className="w-full overflow-hidden transition-all duration-300 bg-secondary/50 hover:bg-secondary/80 border-transparent">
+      <Card className="w-full overflow-hidden transition-all duration-300 bg-muted/40 hover:bg-muted/80 border-transparent">
         <CardContent className="p-4">
           <div className="relative mb-4">
             <div className="aspect-square w-full overflow-hidden rounded-md">
