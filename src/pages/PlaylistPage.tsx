@@ -70,6 +70,7 @@ const mockPlaylist = {
 };
 
 const PlaylistPage = () => {
+  console.log('PlaylistPage loaded');
   const [searchParams] = useSearchParams();
   const playlistId = searchParams.get('id');
 
@@ -77,4 +78,73 @@ const PlaylistPage = () => {
   const playlistData = mockPlaylist; 
 
   return (
-    <div className=\"relative min-h-screen bg-background text-foreground\">\n      <LeftSidebar />\n      <MusicPlayerBar />\n      <main className=\"pl-0 md:pl-64 pb-28\">\n        <Header />\n        <ScrollArea className=\"h-[calc(100vh-7rem)]\">\n          <div className=\"px-6 py-8\">\n            {/* Playlist Header Section */}\n            <section className=\"flex flex-col md:flex-row items-center md:items-end gap-6 mb-8\">\n              <img\n                src={playlistData.coverArtUrl}\n                alt={`${playlistData.name} cover art`}\n                className=\"h-48 w-48 rounded-lg shadow-2xl object-cover\"\n              />\n              <div className=\"flex flex-col gap-2 text-center md:text-left\">\n                <p className=\"text-sm font-bold\">Playlist</p>\n                <h1 className=\"text-5xl md:text-7xl font-extrabold tracking-tighter\">\n                  {playlistData.name}\n                </h1>\n                <p className=\"text-muted-foreground mt-2\">{playlistData.description}</p>\n                <p className=\"text-sm mt-1\">\n                  Created by <span className=\"font-semibold text-foreground\">{playlistData.creator}</span> • {playlistData.songs.length} songs\n                </p>\n              </div>\n            </section>\n\n            {/* Action Bar & Song List Section */}\n            <section>\n              <div className=\"flex items-center gap-4 mb-6\">\n                <Button size=\"icon\" className=\"h-14 w-14 rounded-full\">\n                  <Play className=\"h-7 w-7 fill-black text-black\" />\n                </Button>\n              </div>\n\n              {/* Song List Header */}\n              <div className=\"grid grid-cols-[32px_4fr_2fr_1fr_48px] items-center gap-4 px-4 py-2 text-muted-foreground border-b border-border text-sm\">\n                <div className=\"flex items-center justify-center\">\n                  <Hash className=\"h-4 w-4\" />\n                </div>\n                <div>Title</div>\n                <div>Album</div>\n                <div className=\"justify-self-end\">\n                  <Clock className=\"h-4 w-4\" />\n                </div>\n                <div /> {/* Empty div for dropdown menu column */}\n              </div>\n\n              {/* Song Items */}\n              <div className=\"mt-2\">\n                {playlistData.songs.map((song) => (\n                  <SongListItem\n                    key={song.trackNumber}\n                    trackNumber={song.trackNumber}\n                    title={song.title}\n                    artist={song.artist}\n                    album={song.album}\n                    duration={song.duration}\n                    imageUrl={song.imageUrl}\n                  />\n                ))}\n              </div>\n            </section>\n          </div>\n        </ScrollArea>\n      </main>\n    </div>\n  );\n};\n\nexport default PlaylistPage;
+    <div className="relative min-h-screen bg-background text-foreground">
+      <LeftSidebar />
+      <MusicPlayerBar />
+      <main className="pl-0 md:pl-64 pb-28">
+        <Header />
+        <ScrollArea className="h-[calc(100vh-7rem)]">
+          <div className="px-6 py-8">
+            {/* Playlist Header Section */}
+            <section className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
+              <img
+                src={playlistData.coverArtUrl}
+                alt={`${playlistData.name} cover art`}
+                className="h-48 w-48 rounded-lg shadow-2xl object-cover"
+              />
+              <div className="flex flex-col gap-2 text-center md:text-left">
+                <p className="text-sm font-bold">Playlist</p>
+                <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter">
+                  {playlistData.name}
+                </h1>
+                <p className="text-muted-foreground mt-2">{playlistData.description}</p>
+                <p className="text-sm mt-1">
+                  Created by <span className="font-semibold text-foreground">{playlistData.creator}</span> • {playlistData.songs.length} songs
+                </p>
+              </div>
+            </section>
+
+            {/* Action Bar & Song List Section */}
+            <section>
+              <div className="flex items-center gap-4 mb-6">
+                <Button size="icon" className="h-14 w-14 rounded-full">
+                  <Play className="h-7 w-7 fill-current" />
+                </Button>
+              </div>
+
+              {/* Song List Header */}
+              <div className="grid grid-cols-[32px_4fr_2fr_1fr_48px] items-center gap-4 px-4 py-2 text-muted-foreground border-b border-border text-sm">
+                <div className="flex items-center justify-center">
+                  <Hash className="h-4 w-4" />
+                </div>
+                <div>Title</div>
+                <div>Album</div>
+                <div className="justify-self-end">
+                  <Clock className="h-4 w-4" />
+                </div>
+                <div /> {/* Empty div for dropdown menu column */}
+              </div>
+
+              {/* Song Items */}
+              <div className="mt-2">
+                {playlistData.songs.map((song) => (
+                  <SongListItem
+                    key={song.trackNumber}
+                    trackNumber={song.trackNumber}
+                    title={song.title}
+                    artist={song.artist}
+                    album={song.album}
+                    duration={song.duration}
+                    imageUrl={song.imageUrl}
+                  />
+                ))}\
+              </div>
+            </section>
+          </div>
+        </ScrollArea>
+      </main>
+    </div>
+  );
+};
+
+export default PlaylistPage;
