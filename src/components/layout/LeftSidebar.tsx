@@ -20,8 +20,6 @@ const mockPlaylists = [
 ];
 
 const LeftSidebar: React.FC = () => {
-  console.log('LeftSidebar loaded');
-
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
       "flex items-center gap-4 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary",
@@ -66,8 +64,7 @@ const LeftSidebar: React.FC = () => {
               >
                 {playlist.name}
               </Link>
-            ))}
-          </nav>
+            ))}</nav>
         </ScrollArea>
       </div>
     </aside>
