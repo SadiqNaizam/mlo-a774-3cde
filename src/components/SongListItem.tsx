@@ -31,8 +31,10 @@ const SongListItem: React.FC<SongListItemProps> = ({
   duration,
   imageUrl,
 }) => {
+  console.log('SongListItem loaded for:', title);
+
   return (
-    <div className="group grid grid-cols-[32px_4fr_2fr_1fr_48px] items-center gap-4 px-4 py-2 rounded-md hover:bg-muted transition-colors text-sm">
+    <div className="group grid grid-cols-[32px_4fr_2fr_1fr_48px] items-center gap-4 px-4 py-2 rounded-md hover:bg-muted/50 transition-colors text-sm">
       {/* Track Number / Play Button */}
       <div className="flex items-center justify-center text-muted-foreground">
         <span className="group-hover:hidden">{trackNumber}</span>
